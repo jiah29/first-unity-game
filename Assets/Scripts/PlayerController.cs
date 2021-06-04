@@ -9,12 +9,15 @@ public class PlayerController : MonoBehaviour
     private float jumpForce = 5.0f;
     public float horizontalInput;
     private float xRange = 12.0f;
+    public int collisions = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         Physics.gravity = new Vector3(0, 0, -9.8f);
+
+        Debug.Log("Number of Collision: " +  collisions);
     }
 
     // Update is called once per frame
@@ -30,13 +33,26 @@ public class PlayerController : MonoBehaviour
 
         ConstraintPlayerPosition();
 
+        if (collisions == 3)
+        {
+            Debug.Log("Game Over!");
+        }
+
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.CompareTag("Platform"))
+        if (collision.gameObject.CompareTag("Platform"))
         {
             playerRb.AddForce(Vector3.forward * jumpForce, ForceMode.Impulse);
+        } else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Rigidbody enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            Vector3 awayFromPlayer = (collision.gameObject.transform.position - transform.position);
+
+            enemyRigidbody.AddForce(awayFromPlayer * 10.0f, ForceMode.Impulse);
+            collisions++;
+            Debug.Log("Number of Collision: " + collisions);
         }
     }
 
