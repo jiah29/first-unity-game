@@ -1,2 +1,2 @@
 # my-unity-game
-My Simple Unity Game Using C# - Version 2.1
+My Simple Unity Game Using C# - Version 2.2
