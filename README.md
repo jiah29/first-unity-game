@@ -1,5 +1,5 @@
 # my-unity-game
-My first simple Unity game using C# scripts - Version 2.2
+Created a very basic Unity game to learn C# and Unity game development.
 
 Find the game here: https://jiah29.itch.io/gttos-sample
 
