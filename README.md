@@ -1,5 +1,5 @@
 # my-unity-game
-Created a very basic Unity game to learn C# and Unity game development.
+Created a very basic Unity game to experiment and learn C# and Unity game development.
 
 Find the game here: https://jiah29.itch.io/gttos-sample
 
